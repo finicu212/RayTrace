@@ -4,13 +4,13 @@ template <typename T>
 Vec3<T>::Vec3(T xCoord, T yCoord, T zCoord) : x(xCoord), y(yCoord), z(zCoord) {};
 
 template <typename T>
-T Vec3<T>::getX() const { return x };
+T Vec3<T>::getX() const { return x; };
 
 template <typename T>
-T Vec3<T>::getY() const { return y };
+T Vec3<T>::getY() const { return y; };
 
 template <typename T>
-T Vec3<T>::getZ() const { return z };
+T Vec3<T>::getZ() const { return z; };
 
 template <typename T>
 Vec3<T> Vec3<T>::operator + (const Vec3<T>& v) const

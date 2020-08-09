@@ -36,7 +36,7 @@ public:
 	T norm() const;
 
 	/// <summary>
-	/// Normalizes this vector
+	/// Normalizes this vector (makes the norm 1)
 	/// </summary>
 	/// <returns>A reference to this vector which is now normalized</returns>
 	Vec3<T>& normalize();
