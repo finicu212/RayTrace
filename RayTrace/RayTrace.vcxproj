@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="RayTrace.cpp" />
+    <ClCompile Include="Vec3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
