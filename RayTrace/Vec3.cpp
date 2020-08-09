@@ -35,3 +35,34 @@ Vec3<T> Vec3<T>::operator / (double d) const
 {
 	return Vec3<T>(x / d, y / d, z / d);
 }
+
+template <typename T>
+T Vec3<T>::dot(const Vec3<T>& v) const
+{
+	return x * v.x + y * v.y + z * v.z;
+}
+
+template <typename T>
+Vec3<T> Vec3<T>::cross(const Vec3<T>& v) const
+{
+	return Vec3<T>(
+		y * v.z - z * v.y,
+		z * v.x - x * v.z,
+		x * v.y - y * v.x);
+}
+
+template <typename T>
+T Vec3<T>::norm() const
+{
+	return sqrt(x * x + y * y + z * z);
+}
+
+template <typename T>
+Vec3<T>& Vec3<T>::normalize()
+{
+	T inverseNorm = 1 / norm();
+	x *= 1 / inverseNorm;
+	y *= 1 / inverseNorm;
+	z *= 1 / inverseNorm;
+	return *this;
+}
