@@ -1,77 +1,64 @@
 #include "Vec3.h"
 #include <iostream>
 
-template <typename T>
-Vec3<T>::Vec3(T xCoord, T yCoord, T zCoord) : x(xCoord), y(yCoord), z(zCoord) {};
+Vec3::Vec3(double xCoord, double yCoord, double zCoord) : x(xCoord), y(yCoord), z(zCoord) {};
 
 /*** Getters ***/
 
-template <typename T>
-T Vec3<T>::getX() const { return x; };
+double Vec3::getX() const { return x; };
 
-template <typename T>
-T Vec3<T>::getY() const { return y; };
+double Vec3::getY() const { return y; };
 
-template <typename T>
-T Vec3<T>::getZ() const { return z; };
+double Vec3::getZ() const { return z; };
 
 /*** Operator overloads ***/
 
-template <typename T>
-Vec3<T> Vec3<T>::operator + (const Vec3<T>& v) const
+Vec3 Vec3::operator + (const Vec3& v) const
 {
-	return Vec3<T>(x + v.x, y + v.y, z + v.z);
+	return Vec3(x + v.x, y + v.y, z + v.z);
 }
 
-template <typename T>
-Vec3<T> Vec3<T>::operator - (const Vec3<T>& v) const
+Vec3 Vec3::operator - (const Vec3& v) const
 {
-	return Vec3<T>(x - v.x, y - v.y, z - v.z);
+	return Vec3(x - v.x, y - v.y, z - v.z);
 }
 
-template <typename T>
-Vec3<T> Vec3<T>::operator * (double d) const
+Vec3 Vec3::operator * (double d) const
 {
-	return Vec3<T>(x * d, y * d, z * d);
+	return Vec3(x * d, y * d, z * d);
 }
 
-template <typename T>
-Vec3<T> Vec3<T>::operator / (double d) const
+Vec3 Vec3::operator / (double d) const
 {
-	return Vec3<T>(x / d, y / d, z / d);
+	return Vec3(x / d, y / d, z / d);
 }
 
-template <typename T>
-std::ostream& operator<< (std::ostream& o, const Vec3<T>& v)
+std::ostream& operator<< (std::ostream& o, const Vec3& v)
 {
 	return o << v.x << ' ' << v.y << ' ' << v.z;
 }
 
 /*** Utility ***/
 
-template <typename T>
-T Vec3<T>::dot(const Vec3<T>& v) const
+double Vec3::dot(const Vec3& v) const
 {
 	return x * v.x + y * v.y + z * v.z;
 }
 
-template <typename T>
-Vec3<T> Vec3<T>::cross(const Vec3<T>& v) const
+Vec3 Vec3::cross(const Vec3& v) const
 {
-	return Vec3<T>(
+	return Vec3(
 		y * v.z - z * v.y,
 		z * v.x - x * v.z,
 		x * v.y - y * v.x);
 }
 
-template <typename T>
-T Vec3<T>::norm() const
+double Vec3::norm() const
 {
 	return sqrt(x * x + y * y + z * z);
 }
 
-template <typename T>
-Vec3<T> Vec3<T>::normalize()
+Vec3 Vec3::normalize()
 {
-	return this / this.norm();
+	return *this / this->norm();
 }

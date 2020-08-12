@@ -1,47 +1,46 @@
 #include <iostream>
 #pragma once
 
-template <typename T>
 class Vec3
 {
 private:
-	T x, y, z;
+	double x, y, z;
 
 public:
-	Vec3(T xCoord, T yCoord, T zCoord);
+	Vec3(double xCoord, double yCoord, double zCoord);
 
-	T getX() const;
-	T getY() const;
-	T getZ() const;
+	double getX() const;
+	double getY() const;
+	double getZ() const;
 
-	Vec3<T> operator + (const Vec3<T>& v) const;
-	Vec3<T> operator - (const Vec3<T>& v) const;
-	Vec3<T> operator * (double d) const;
-	Vec3<T> operator / (double d) const;
+	Vec3 operator + (const Vec3& v) const;
+	Vec3 operator - (const Vec3& v) const;
+	Vec3 operator * (double d) const;
+	Vec3 operator / (double d) const;
 
 	/// <summary>
 	/// Returns the dot product of the two vectors
 	/// </summary>
 	/// <param name="v">Second vector</param>
 	/// <returns>Scalar containing dot product</returns>
-	T dot(const Vec3<T>& v) const;
+	double dot(const Vec3& v) const;
 
 	/// <summary>
 	/// Returns the cross product of the two vectors
 	/// </summary>
 	/// <param name="v">Second vector</param>
 	/// <returns>Vec3 normal to the plane formed by the two given vecs</returns>
-	Vec3<T> cross(const Vec3<T>& v) const;
+	Vec3 cross(const Vec3& v) const;
 
 	/// <returns> norm (magnitude) of this vector </returns>
-	T norm() const;
+	double norm() const;
 
 	/// <summary>
 	/// Normalizes this vector (makes the norm 1)
 	/// </summary>
 	/// <returns>A Vec3 object which is now normalized</returns>
 
-	Vec3<T> normalize();
+	Vec3 normalize();
 
 	using Point3 = Vec3;
 	using Color = Vec3;
