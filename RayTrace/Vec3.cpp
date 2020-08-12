@@ -62,3 +62,6 @@ Vec3 Vec3::normalize()
 {
 	return *this / this->norm();
 }
+
+using Point3 = Vec3;
+using Color = Vec3;
