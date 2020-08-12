@@ -35,7 +35,7 @@ Vec3 Vec3::operator / (double d) const
 
 std::ostream& operator<< (std::ostream& o, const Vec3& v)
 {
-	return o << v.x << ' ' << v.y << ' ' << v.z;
+	return o << v.getX() << ' ' << v.getY() << ' ' << v.getZ();
 }
 
 /*** Utility ***/
