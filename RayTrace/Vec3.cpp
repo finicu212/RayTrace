@@ -1,7 +1,10 @@
 #include "Vec3.h"
+#include <iostream>
 
 template <typename T>
 Vec3<T>::Vec3(T xCoord, T yCoord, T zCoord) : x(xCoord), y(yCoord), z(zCoord) {};
+
+/*** Getters ***/
 
 template <typename T>
 T Vec3<T>::getX() const { return x; };
@@ -11,6 +14,8 @@ T Vec3<T>::getY() const { return y; };
 
 template <typename T>
 T Vec3<T>::getZ() const { return z; };
+
+/*** Operator overloads ***/
 
 template <typename T>
 Vec3<T> Vec3<T>::operator + (const Vec3<T>& v) const
@@ -35,6 +40,14 @@ Vec3<T> Vec3<T>::operator / (double d) const
 {
 	return Vec3<T>(x / d, y / d, z / d);
 }
+
+template <typename T>
+std::ostream& operator<< (std::ostream& o, const Vec3<T>& v)
+{
+	return o << v.x << ' ' << v.y << ' ' << v.z;
+}
+
+/*** Utility ***/
 
 template <typename T>
 T Vec3<T>::dot(const Vec3<T>& v) const
