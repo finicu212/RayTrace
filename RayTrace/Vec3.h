@@ -42,4 +42,7 @@ public:
 	/// <returns>A Vec3 object which is now normalized</returns>
 
 	Vec3<T> normalize();
+
+	using Point3 = Vec3;
+	using Color = Vec3;
 };
