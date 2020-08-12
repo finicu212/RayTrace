@@ -71,11 +71,7 @@ T Vec3<T>::norm() const
 }
 
 template <typename T>
-Vec3<T>& Vec3<T>::normalize()
+Vec3<T> Vec3<T>::normalize()
 {
-	T inverseNorm = 1 / norm();
-	x *= 1 / inverseNorm;
-	y *= 1 / inverseNorm;
-	z *= 1 / inverseNorm;
-	return *this;
+	return this / this.norm();
 }
