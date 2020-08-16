@@ -8,11 +8,11 @@ int main() {
     const int IMAGE_WIDTH = 256;
     const int IMAGE_HEIGHT = 256;
 
-    // Render
-
     BMP image;
     image.SetSize(IMAGE_WIDTH, IMAGE_HEIGHT);
     image.SetBitDepth(16);
+
+    // Render
 
     for (int j = IMAGE_HEIGHT - 1; j >= 0; --j)
     {
