@@ -39,6 +39,5 @@ public:
 	/// Normalizes this vector (makes the norm 1)
 	/// </summary>
 	/// <returns>A Vec3 object which is now normalized</returns>
-
 	Vec3 normalize();
 };
