@@ -139,10 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\includes\EasyBMP\EasyBMP.cpp" />
     <ClCompile Include="RayTrace.cpp" />
     <ClCompile Include="Vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\includes\EasyBMP\EasyBMP.h" />
+    <ClInclude Include="..\includes\EasyBMP\EasyBMP_BMP.h" />
+    <ClInclude Include="..\includes\EasyBMP\EasyBMP_DataStructures.h" />
+    <ClInclude Include="..\includes\EasyBMP\EasyBMP_VariousBMPutilities.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
