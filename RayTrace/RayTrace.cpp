@@ -25,15 +25,14 @@ int main()
     image.SetBitDepth(24);
 
     // Camera
+    const double VIEWPORT_HEIGHT = 2.0;
+    const double VIEWPORT_WIDTH = ASPECT_RATIO * VIEWPORT_HEIGHT;
+    const double FOCAL_LENGTH = 1.0;
 
-    double VIEWPORT_HEIGHT = 2.0;
-    double VIEWPORT_WIDTH = ASPECT_RATIO * VIEWPORT_HEIGHT;
-    double FOCAL_LENGTH = 1.0;
-
-    auto origin = Point3(0, 0, 0);
-    auto horizontal = Vec3(VIEWPORT_WIDTH, 0, 0);
-    auto vertical = Vec3(0, VIEWPORT_HEIGHT, 0);
-    auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - Vec3(0, 0, FOCAL_LENGTH);
+    const Point3 ORIGIN = Point3(0, 0, 0);
+    const Vec3 HORIZ_VEC = Vec3(VIEWPORT_WIDTH, 0, 0);
+    const Vec3 VERTICAL_VEC = Vec3(0, VIEWPORT_HEIGHT, 0);
+    const Point3 BOTTOM_LEFT = ORIGIN - HORIZ_VEC / 2 - VERTICAL_VEC / 2 - Vec3(0, 0, FOCAL_LENGTH);
 
     // Render
     for (int j = IMAGE_HEIGHT - 1; j >= 0; --j)
@@ -45,7 +44,7 @@ int main()
             double u = double(i) / IMAGE_WIDTH;
             double v = double(j) / IMAGE_HEIGHT;
 
-            Ray r(origin, lower_left_corner + horizontal * u + vertical * v - origin);
+            Ray r(ORIGIN, BOTTOM_LEFT + HORIZ_VEC * u + VERTICAL_VEC * v - ORIGIN);
             Color c = rayColor(r);
 
             pixelCurrent.Red = static_cast<int>(255 * c.getX());
