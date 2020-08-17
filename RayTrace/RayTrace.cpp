@@ -6,7 +6,7 @@
 Color rayColor(const Ray& r)
 {
     Vec3 direction = r.getDirection().normalize();
-    auto t = 0.5 * direction.getY() + 1.0;
+    auto t = 0.5 * (direction.getY() + 1.0);
 
     // blendedValue = (1 - t) * startValue + t * endValue
     return Color(1.0, 1.0, 1.0) * (1 - t) + Color(0.5, 0.7, 1.0) * t;
