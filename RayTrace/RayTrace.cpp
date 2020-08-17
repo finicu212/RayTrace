@@ -1,36 +1,59 @@
 #include <iostream>
+#include "Ray.h"
+#include "Vec3.h"
 #include "../includes/EasyBMP/EasyBMP.h"
 
-int main() {
+Color rayColor(const Ray& r)
+{
+    Vec3 direction = r.getDirection().normalize();
+    auto t = 0.5 * direction.getY() + 1.0;
+
+    // blendedValue = (1 - t) * startValue + t * endValue
+    return Color(1.0, 1.0, 1.0) * (1 - t) + Color(0.5, 0.7, 1.0) * t;
+}
+
+int main()
+{
 
     // Image
-
-    const int IMAGE_WIDTH = 256;
-    const int IMAGE_HEIGHT = 256;
+    const double ASPECT_RATIO = 16.0 / 9;
+    const int IMAGE_WIDTH = 400;
+    const int IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / ASPECT_RATIO);
 
     BMP image;
     image.SetSize(IMAGE_WIDTH, IMAGE_HEIGHT);
     image.SetBitDepth(16);
 
-    // Render
+    // Camera
 
+    double VIEWPORT_HEIGHT = 2.0;
+    double VIEWPORT_WIDTH = ASPECT_RATIO * VIEWPORT_HEIGHT;
+    double FOCAL_LENGTH = 1.0;
+
+    auto origin = Point3(0, 0, 0);
+    auto horizontal = Vec3(VIEWPORT_WIDTH, 0, 0);
+    auto vertical = Vec3(0, VIEWPORT_HEIGHT, 0);
+    auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - Vec3(0, 0, FOCAL_LENGTH);
+
+    // Render
     for (int j = IMAGE_HEIGHT - 1; j >= 0; --j)
     {
         for (int i = 0; i < IMAGE_WIDTH; ++i)
         {
             RGBApixel pixelCurrent = RGBApixel();
-
             pixelCurrent.Alpha = 255;
 
-            auto r = double(i) / (IMAGE_WIDTH - 1);
-            auto g = double(j) / (IMAGE_HEIGHT - 1);
-            auto b = 0.25;
+            double u = double(i) / IMAGE_WIDTH;
+            double v = double(j) / IMAGE_HEIGHT;
 
-            pixelCurrent.Red = static_cast<int>(255 * r);
-            pixelCurrent.Green = static_cast<int>(255 * g);
-            pixelCurrent.Blue = static_cast<int>(255 * b);
+            Ray r(origin, lower_left_corner + horizontal * u + vertical * v - origin);
+            Color c = rayColor(r);
 
-            image.SetPixel(j, i, pixelCurrent);
+            pixelCurrent.Red = static_cast<int>(255 * c.getX());
+            pixelCurrent.Green = static_cast<int>(255 * c.getY());
+            pixelCurrent.Blue = static_cast<int>(255 * c.getZ());
+
+            image.SetPixel(i, j, pixelCurrent);
         }
     }
 
