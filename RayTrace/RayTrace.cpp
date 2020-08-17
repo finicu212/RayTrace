@@ -22,7 +22,7 @@ int main()
 
     BMP image;
     image.SetSize(IMAGE_WIDTH, IMAGE_HEIGHT);
-    image.SetBitDepth(32);
+    image.SetBitDepth(24);
 
     // Camera
 
@@ -41,7 +41,6 @@ int main()
         for (int i = 0; i < IMAGE_WIDTH; ++i)
         {
             RGBApixel pixelCurrent = RGBApixel();
-            pixelCurrent.Alpha = 255;
 
             double u = double(i) / IMAGE_WIDTH;
             double v = double(j) / IMAGE_HEIGHT;
