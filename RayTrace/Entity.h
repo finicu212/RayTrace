@@ -13,5 +13,5 @@ struct hitInfo
 class Entity
 {
 public:
-	virtual bool isHit(const Ray& r, const hitInfo& info, double t_min, double t_max) const;
+	virtual bool isHit(const Ray& r, hitInfo& info, double t_min, double t_max) const;
 };
