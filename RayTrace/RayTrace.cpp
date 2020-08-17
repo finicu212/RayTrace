@@ -22,7 +22,7 @@ int main()
 
     BMP image;
     image.SetSize(IMAGE_WIDTH, IMAGE_HEIGHT);
-    image.SetBitDepth(16);
+    image.SetBitDepth(32);
 
     // Camera
 
