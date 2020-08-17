@@ -1,5 +1,8 @@
 #pragma once
-#include "Vec3.cpp"
+#include "Vec3.h"
+
+using Point3 = Vec3;
+using Color = Vec3;
 
 class Ray 
 {
