@@ -7,6 +7,13 @@ struct hitInfo
 	Vec3 normal;
 	// t_min < t < t_max
 	double t;
+
+	void update(Point3 loc, Vec3 n, double t)
+	{
+		this->location = loc;
+		this->normal = n;
+		this->t = t;
+	}
 };
 
 // abstract class

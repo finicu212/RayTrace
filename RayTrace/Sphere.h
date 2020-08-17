@@ -30,18 +30,22 @@ bool Sphere::isHit(const Ray& r, hitInfo& info, double t_min, double t_max) cons
 		t0 = (-tcb - sqrt(delta)) / a;
 		if (t0 > t_min && t0 < t_max)
 		{
-			info.t = t0;
-			info.location = r.pointAt(t0);
-			info.normal = (info.location - center) / radius;
+			info.update(
+				r.pointAt(t0), // location of point
+				(r.pointAt(t0) - center) / radius, // normal
+				t0 // t
+			);
 			return true;
 		}
 
 		t0 = (-tcb + sqrt(delta)) / a;
 		if (t0 > t_min && t0 < t_max)
 		{
-			info.t = t0;
-			info.location = r.pointAt(t0);
-			info.normal = (info.location - center) / radius;
+			info.update(
+				r.pointAt(t0), // location of point
+				(r.pointAt(t0) - center) / radius, // normal
+				t0 // t
+			);
 			return true;
 		}
 	}
