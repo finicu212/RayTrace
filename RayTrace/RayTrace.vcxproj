@@ -148,7 +148,9 @@
     <ClInclude Include="..\includes\EasyBMP\EasyBMP_BMP.h" />
     <ClInclude Include="..\includes\EasyBMP\EasyBMP_DataStructures.h" />
     <ClInclude Include="..\includes\EasyBMP\EasyBMP_VariousBMPutilities.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
