@@ -44,5 +44,11 @@
     <ClInclude Include="..\includes\EasyBMP\EasyBMP_VariousBMPutilities.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
