@@ -1,7 +1,9 @@
 #include "Vec3.h"
 #include <iostream>
 
-Vec3::Vec3(double xCoord, double yCoord, double zCoord) : x(xCoord), y(yCoord), z(zCoord) {};
+Vec3::Vec3(double xCoord, double yCoord, double zCoord) 
+	: x(xCoord), y(yCoord), z(zCoord) 
+{};
 
 /*** Getters ***/
 
@@ -62,6 +64,3 @@ Vec3 Vec3::normalize()
 {
 	return *this / this->norm();
 }
-
-using Point3 = Vec3;
-using Color = Vec3;
