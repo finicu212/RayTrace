@@ -8,7 +8,7 @@ public:
 		center(c), radius(r)
 	{};
 
-	virtual bool isHit(const Ray& r, hitInfo& info, double t_min, double t_max) const override;
+	bool isHit(const Ray& r, hitInfo& info, double t_min, double t_max) const;
 
 private:
 	Point3 center;

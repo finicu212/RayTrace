@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Sphere.h"
 #include "Ray.h"
 #include "Vec3.h"
 #include "../includes/EasyBMP/EasyBMP.h"
@@ -46,6 +47,7 @@ int main()
 
             Ray r(ORIGIN, BOTTOM_LEFT + HORIZ_VEC * u + VERTICAL_VEC * v - ORIGIN);
             Color c = rayColor(r);
+            Sphere s(ORIGIN, 1);
 
             pixelCurrent.Red = static_cast<int>(255 * c.getX());
             pixelCurrent.Green = static_cast<int>(255 * c.getY());
