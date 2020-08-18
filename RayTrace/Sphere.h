@@ -33,8 +33,9 @@ hitInfo Sphere::getHitInfo(const Ray& r, const hitInfo& info, double t_min, doub
 			hitInfo returnedInfo;
 			returnedInfo.hitEntity = true;
 			returnedInfo.location = r.pointAt(t0);
-			returnedInfo.normal = (r.pointAt(t0) - center) / radius;
 			returnedInfo.t = t0;
+			Vec3 outNormal = (r.pointAt(t0) - center) / radius;
+			returnedInfo.updateHitFrontFace(r, outNormal);
 			return returnedInfo;
 		}
 
@@ -44,8 +45,9 @@ hitInfo Sphere::getHitInfo(const Ray& r, const hitInfo& info, double t_min, doub
 			hitInfo returnedInfo;
 			returnedInfo.hitEntity = true;
 			returnedInfo.location = r.pointAt(t0);
-			returnedInfo.normal = (r.pointAt(t0) - center) / radius;
 			returnedInfo.t = t0;
+			Vec3 outNormal = (r.pointAt(t0) - center) / radius;
+			returnedInfo.updateHitFrontFace(r, outNormal);
 			return returnedInfo;
 		}
 	}
