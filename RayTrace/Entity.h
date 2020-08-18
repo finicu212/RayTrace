@@ -8,14 +8,6 @@ struct hitInfo
 	Vec3 normal;
 	// t_min < t < t_max
 	double t;
-
-	void update(bool hitSomething, Point3 loc, Vec3 n, double t)
-	{
-		this->hitEntity = hitSomething;
-		this->location = loc;
-		this->normal = n;
-		this->t = t;
-	}
 };
 
 // abstract class

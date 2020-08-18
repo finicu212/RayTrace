@@ -17,6 +17,7 @@ private:
 
 bool Sphere::isHit(const Ray& r, hitInfo& info, double t_min, double t_max) const
 {
+	hitInfo returnedInfo();
 	Vec3 Len = center - r.getOrigin();
 	double a = r.getDirection().norm() * r.getDirection().norm();
 	double tcb = Len.dot(r.getDirection());
@@ -30,23 +31,21 @@ bool Sphere::isHit(const Ray& r, hitInfo& info, double t_min, double t_max) cons
 		t0 = (-tcb - sqrt(delta)) / a;
 		if (t0 > t_min && t0 < t_max)
 		{
-			info.update(
-				r.pointAt(t0), // location of point
-				(r.pointAt(t0) - center) / radius, // normal
-				t0 // t
-			);
-			return true;
+			info.hitEntity = true;
+			info.location = r.pointAt(t0);
+			info.normal = (r.pointAt(t0) - center) / radius;
+			info.t = t0;
+			return info;
 		}
 
 		t0 = (-tcb + sqrt(delta)) / a;
 		if (t0 > t_min && t0 < t_max)
 		{
-			info.update(
-				r.pointAt(t0), // location of point
-				(r.pointAt(t0) - center) / radius, // normal
-				t0 // t
-			);
-			return true;
+			info.hitEntity = true;
+			info.location = r.pointAt(t0);
+			info.normal = (r.pointAt(t0) - center) / radius;
+			info.t = t0;
+			return info;
 		}
 	}
 
