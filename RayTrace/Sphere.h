@@ -8,14 +8,14 @@ public:
 		center(c), radius(r)
 	{};
 
-	bool isHit(const Ray& r, hitInfo& info, double t_min, double t_max) const;
+	hitInfo getHitInfo(const Ray& r, const hitInfo& info, double t_min, double t_max) const;
 
 private:
 	Point3 center;
 	double radius;
 };
 
-bool Sphere::isHit(const Ray& r, hitInfo& info, double t_min, double t_max) const
+hitInfo Sphere::getHitInfo(const Ray& r, const hitInfo& info, double t_min, double t_max) const
 {
 	Vec3 Len = center - r.getOrigin();
 	double a = r.getDirection().norm() * r.getDirection().norm();
@@ -30,25 +30,27 @@ bool Sphere::isHit(const Ray& r, hitInfo& info, double t_min, double t_max) cons
 		t0 = (-tcb - sqrt(delta)) / a;
 		if (t0 > t_min && t0 < t_max)
 		{
-			info.update(
-				r.pointAt(t0), // location of point
-				(r.pointAt(t0) - center) / radius, // normal
-				t0 // t
-			);
-			return true;
+			hitInfo returnedInfo;
+			returnedInfo.hitEntity = true;
+			returnedInfo.location = r.pointAt(t0);
+			returnedInfo.normal = (r.pointAt(t0) - center) / radius;
+			returnedInfo.t = t0;
+			return returnedInfo;
 		}
 
 		t0 = (-tcb + sqrt(delta)) / a;
 		if (t0 > t_min && t0 < t_max)
 		{
-			info.update(
-				r.pointAt(t0), // location of point
-				(r.pointAt(t0) - center) / radius, // normal
-				t0 // t
-			);
-			return true;
+			hitInfo returnedInfo;
+			returnedInfo.hitEntity = true;
+			returnedInfo.location = r.pointAt(t0);
+			returnedInfo.normal = (r.pointAt(t0) - center) / radius;
+			returnedInfo.t = t0;
+			return returnedInfo;
 		}
 	}
 
-	return false;
+	hitInfo returnedInfo;
+	returnedInfo.hitEntity = false;
+	return returnedInfo;
 }

@@ -1,6 +1,9 @@
 #include "Vec3.h"
 #include <iostream>
 
+Vec3::Vec3() 
+{};
+
 Vec3::Vec3(double xCoord, double yCoord, double zCoord) 
 	: x(xCoord), y(yCoord), z(zCoord) 
 {};
