@@ -8,14 +8,14 @@ public:
 		center(c), radius(r)
 	{};
 
-	hitInfo isHit(const Ray& r, const hitInfo& info, double t_min, double t_max) const;
+	hitInfo getHitInfo(const Ray& r, const hitInfo& info, double t_min, double t_max) const;
 
 private:
 	Point3 center;
 	double radius;
 };
 
-hitInfo Sphere::isHit(const Ray& r, const hitInfo& info, double t_min, double t_max) const
+hitInfo Sphere::getHitInfo(const Ray& r, const hitInfo& info, double t_min, double t_max) const
 {
 	Vec3 Len = center - r.getOrigin();
 	double a = r.getDirection().norm() * r.getDirection().norm();
