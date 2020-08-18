@@ -61,5 +61,8 @@ bool render(const std::vector<Sphere>& spheres)
 
 int main()
 {
-    
+    std::vector<Sphere> spheres;
+    spheres.push_back(Sphere(Vec3(0, 0, 0), 1));
+
+    render(spheres);
 }
