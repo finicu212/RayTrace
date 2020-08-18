@@ -7,6 +7,7 @@ private:
 	double x, y, z;
 
 public:
+	Vec3();
 	Vec3(double xCoord, double yCoord, double zCoord);
 
 	double getX() const;
