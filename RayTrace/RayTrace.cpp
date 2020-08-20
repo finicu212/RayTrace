@@ -6,8 +6,17 @@
 #include "Camera.h"
 #include "../includes/EasyBMP/EasyBMP.h"
 
-Color rayColor(const Ray& r)
+Color rayColor(const Ray& r, const std::vector<Sphere>& spheres)
 {
+    for (Sphere s : spheres)
+    {
+        hitInfo hit;
+        if (s.getHitInfo(r, hit, 0, std::numeric_limits<double>::infinity()).hitEntity)
+        {
+            return (hit.normal + Color(1, 1, 1)) * 0.5;
+        }
+    }
+
     Vec3 direction = r.getDirection().normalize();
     auto t = 0.5 * (direction.getY() + 1.0);
 
