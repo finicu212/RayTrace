@@ -72,3 +72,17 @@ Vec3 Vec3::normalize()
 {
 	return *this / this->norm();
 }
+
+// Color struct:
+
+Color::Color()
+{
+	R = G = B = 0;
+}
+
+Color::Color(unsigned char red, unsigned char green, unsigned char blue)
+{
+	R = red;
+	G = green;
+	B = blue;
+}

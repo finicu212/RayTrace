@@ -47,4 +47,7 @@ public:
 struct Color
 {
 	unsigned char R, G, B;
+
+	Color();
+	Color(unsigned char red, unsigned char green, unsigned char blue);
 };
