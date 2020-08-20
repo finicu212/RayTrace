@@ -3,6 +3,7 @@
 #include "Sphere.h"
 #include "Ray.h"
 #include "Vec3.h"
+#include "Camera.h"
 #include "../includes/EasyBMP/EasyBMP.h"
 
 Color rayColor(const Ray& r)
@@ -21,14 +22,7 @@ bool render(const std::vector<Sphere>& spheres)
     const int IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / ASPECT_RATIO);
 
     // Camera:
-    const double VIEWPORT_HEIGHT = 2.0;
-    const double VIEWPORT_WIDTH = ASPECT_RATIO * VIEWPORT_HEIGHT;
-    const double FOCAL_LENGTH = 1.0;
-
-    const Point3 ORIGIN = Point3(0, 0, 0);
-    const Vec3 HORIZ_VEC = Vec3(VIEWPORT_WIDTH, 0, 0);
-    const Vec3 VERTICAL_VEC = Vec3(0, VIEWPORT_HEIGHT, 0);
-    const Point3 BOTTOM_LEFT = ORIGIN - HORIZ_VEC / 2 - VERTICAL_VEC / 2 - Vec3(0, 0, FOCAL_LENGTH);
+    Camera cam;
 
     // BMP generation
     BMP image;
@@ -45,7 +39,7 @@ bool render(const std::vector<Sphere>& spheres)
             double u = double(i) / IMAGE_WIDTH;
             double v = double(j) / IMAGE_HEIGHT;
 
-            Ray r(ORIGIN, BOTTOM_LEFT + HORIZ_VEC * u + VERTICAL_VEC * v - ORIGIN);
+            Ray r = cam.getRay(u, v);
             Color c = rayColor(r);
 
             pixelCurrent.Red = static_cast<int>(255 * c.getX());
