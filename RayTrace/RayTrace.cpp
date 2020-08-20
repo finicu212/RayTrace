@@ -22,7 +22,7 @@ bool render(const std::vector<Sphere>& spheres)
     const int IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / ASPECT_RATIO);
 
     // Camera:
-    Camera cam();
+    Camera cam;
 
     // BMP generation
     BMP image;
@@ -39,7 +39,7 @@ bool render(const std::vector<Sphere>& spheres)
             double u = double(i) / IMAGE_WIDTH;
             double v = double(j) / IMAGE_HEIGHT;
 
-            Ray r(ORIGIN, BOTTOM_LEFT + HORIZ_VEC * u + VERTICAL_VEC * v - ORIGIN);
+            Ray r = cam.getRay(u, v);
             Color c = rayColor(r);
 
             pixelCurrent.Red = static_cast<int>(255 * c.getX());
