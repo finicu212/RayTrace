@@ -42,9 +42,9 @@ bool render(const std::vector<Sphere>& spheres)
             Ray r = cam.getRay(u, v);
             Color c = rayColor(r);
 
-            pixelCurrent.Red = static_cast<int>(255 * c.getX());
-            pixelCurrent.Green = static_cast<int>(255 * c.getY());
-            pixelCurrent.Blue = static_cast<int>(255 * c.getZ());
+            pixelCurrent.Red = static_cast<int>(255 * c.R);
+            pixelCurrent.Green = static_cast<int>(255 * c.G);
+            pixelCurrent.Blue = static_cast<int>(255 * c.B);
 
             image.SetPixel(i, j, pixelCurrent);
         }
