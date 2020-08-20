@@ -17,9 +17,9 @@ public:
         const Point3 BOTTOM_LEFT = ORIGIN - HORIZ_VEC / 2 - VERTICAL_VEC / 2 - Vec3(0, 0, FOCAL_LENGTH);
     }
 
-    Ray get_ray(double u, double v) const
+    Ray getRay(double u, double v) const
     {
-        return Ray(ORIGIN, BOTTOM_LEFT + u * HORIZ_VEC + v * VERTICAL_VEC - ORIGIN);
+        return Ray(ORIGIN, BOTTOM_LEFT + HORIZ_VEC * u + VERTICAL_VEC * v - ORIGIN);
     }
 
 private:
