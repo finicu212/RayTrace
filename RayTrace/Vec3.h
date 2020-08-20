@@ -43,3 +43,8 @@ public:
 	/// <returns>A Vec3 object which is now normalized</returns>
 	Vec3 normalize();
 };
+
+struct Color
+{
+	unsigned char R, G, B;
+};
