@@ -49,7 +49,7 @@ bool render(const std::vector<Sphere>& spheres)
             double v = double(j) / IMAGE_HEIGHT;
 
             Ray r = cam.getRay(u, v);
-            Color c = rayColor(r);
+            Color c = rayColor(r, spheres);
 
             pixelCurrent.Red = static_cast<int>(255 * c.getX());
             pixelCurrent.Green = static_cast<int>(255 * c.getY());
