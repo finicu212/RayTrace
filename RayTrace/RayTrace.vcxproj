@@ -150,7 +150,6 @@
     <ClInclude Include="..\includes\EasyBMP\EasyBMP_VariousBMPutilities.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="EntityList.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Vec3.h" />
