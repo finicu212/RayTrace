@@ -4,11 +4,12 @@
 #include "Ray.h"
 #include "Vec3.h"
 #include "Camera.h"
+#include "EntityList.h"
 #include "../includes/EasyBMP/EasyBMP.h"
 
-Color rayColor(const Ray& r, const std::vector<Sphere>& spheres)
+Color rayColor(const Ray& r, const EntityList& ents)
 {
-    for (Sphere s : spheres)
+    for (const auto s : ents)
     {
         hitInfo hit;
         if (s.getHitInfo(r, hit, 0, std::numeric_limits<double>::infinity()).hitEntity)
@@ -64,8 +65,9 @@ bool render(const std::vector<Sphere>& spheres)
 
 int main()
 {
-    std::vector<Sphere> spheres;
-    spheres.push_back(Sphere(Vec3(0, 0, 0), 1));
+    EntityList ents;
+    ents.add(make_shared<Sphere>(Point3(0, 0, 0), 2));
+
 
     render(spheres);
 }
